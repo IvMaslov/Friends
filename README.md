@@ -24,9 +24,9 @@ python3 manage.py runserver
 docker build . -t friends-to-docker --network=host --rm
 ```
 ## Usage
-Для взаимодействия с API сервиса есть Swagger интерфейс, доступный по url `localhost:8000/swagger`
-так же есть OpenAPI спецификация, доступная по url `localhost:8000/redoc`
-Существует UI, доступный по url `localhost:8000` который зайдействует все функции API. 
+Для взаимодействия с API сервиса есть Swagger интерфейс, доступный по ссылке `localhost:8000/swagger`
+так же есть OpenAPI спецификация, доступная по ссылке `localhost:8000/redoc`
+Существует UI, доступный по ссылке `localhost:8000` который зайдействует все функции API. 
 
 Пример использования UI:
 1. Регистрируете пользователя по ссылке `localhost:8000/signup`
