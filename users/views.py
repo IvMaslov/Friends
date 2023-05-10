@@ -66,6 +66,7 @@ class LogoutView(views.APIView):
 class MainView(views.APIView):
     permission_classes = [permissions.AllowAny]
     @swagger_auto_schema(responses={302: "Redirect"},
-                         tags=["UI"])
+                         tags=["UI"],
+                         operation_id="main")
     def get(self, request):
         return HttpResponseRedirect(redirect_to='index')

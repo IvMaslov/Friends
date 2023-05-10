@@ -25,7 +25,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Open API",
       default_version='v2',
-      description="Test description",
+      description="REST API for Friends service",
    ),
    public=True,
    permission_classes=[permissions.AllowAny],

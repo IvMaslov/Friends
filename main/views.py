@@ -153,7 +153,7 @@ class CheckStatusView(views.APIView):
 class IndexView(views.APIView):
     permission_classes = [AllowAny]
 
-    @swagger_auto_schema(responses={200: "OK", 403: "Unauthorized", 302: "Redirect to auth", 406: "Not acceptable"},
+    @swagger_auto_schema(responses={200: "OK", 403: "Unauthorized", 302: "Redirect to auth"},
                          tags=["UI"])
     def get(self, request):
         if type(request.user) == AnonymousUser:

@@ -1,0 +1,282 @@
+swagger: '2.0'
+info:
+  title: Open API
+  description: REST API for Friends service
+  version: v2
+host: 127.0.0.1:8000
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /:
+    get:
+      operationId: main
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+        '302':
+          description: Redirect
+      tags:
+        - UI
+    parameters: []
+  /accept:
+    get:
+      operationId: accept_list
+      description: Accept request for friendship
+      parameters:
+        - name: username
+          in: query
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong username
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /check_status:
+    get:
+      operationId: check_status_list
+      description: |-
+        Check status of friendship:
+        0-not friends
+        1-incoming request
+        2-outgoing request
+        3-friends
+      parameters:
+        - name: username
+          in: query
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong username
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /delete_friend:
+    get:
+      operationId: delete_friend_list
+      description: Delete user from your friends
+      parameters:
+        - name: username
+          in: query
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong username
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /friends:
+    get:
+      operationId: friends_list
+      description: Return all friends
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /incoming:
+    get:
+      operationId: incoming_list
+      description: Return all incoming requests
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /index:
+    get:
+      operationId: index_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Unauthorized
+        '302':
+          description: Redirect to auth
+      tags:
+        - UI
+    parameters: []
+  /login:
+    get:
+      operationId: login_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - UI
+      security: []
+    post:
+      operationId: login_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            required:
+              - username
+              - password
+            type: object
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        '202':
+          description: Authorizated
+        '400':
+          description: Wrong username or password
+      tags:
+        - Authorization
+      security: []
+    parameters: []
+  /logout:
+    get:
+      operationId: logout_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Authentication credentials were not provided
+      tags:
+        - Authorization
+    parameters: []
+  /outgoing:
+    get:
+      operationId: outgoing_list
+      description: Return all outgoing requests
+      parameters: []
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /refuse:
+    get:
+      operationId: refuse_list
+      description: Refuse request for frienship
+      parameters:
+        - name: username
+          in: query
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Wrong username
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /request_for_friendship:
+    get:
+      operationId: request_for_friendship_list
+      description: Make request for friendship
+      parameters:
+        - name: username
+          in: query
+          type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: User doesn't exist
+        '403':
+          description: Unauthorized
+      tags:
+        - Friends
+    parameters: []
+  /signup:
+    get:
+      operationId: signup_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - UI
+      security: []
+    post:
+      operationId: signup_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            required:
+              - username
+              - password
+            type: object
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: User already exists
+      tags:
+        - Authorization
+      security: []
+    parameters: []
+  /user:
+    get:
+      operationId: user_list
+      description: ''
+      parameters: []
+      responses:
+        '403':
+          description: Forbidden
+        '200':
+          description: OK
+      tags:
+        - Authorization
+    parameters: []
+definitions: {}
